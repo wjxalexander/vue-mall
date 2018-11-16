@@ -28,6 +28,8 @@ new Vue({
   },
   methods:{
     getSearchList(){
+            console.log(this.onLoading)
+
       this.onLoading = true 
       if(this.allLoaded) return;
       axios.get(url.hotLists, {
@@ -48,7 +50,10 @@ new Vue({
           this.searchLists = curList
         }
         this.pageNum++
+        console.log(this.onLoading)
+
         this.onLoading = false 
+
       })
     },
     move(){
