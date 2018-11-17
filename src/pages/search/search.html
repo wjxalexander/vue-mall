@@ -68,9 +68,6 @@
         <div class="search-wrap js-waterfull-wrap">
           <ul
             class="js-list js-lazy"
-            v-infinite-scroll="getSearchList"
-            infinite-scroll-disabled="onLoading"
-            infinite-scroll-distance="10"
           >
             <li class="goods-item" v-for="list in searchLists">
               <a
@@ -98,7 +95,8 @@
       </div>
       <div
         class="go-to-top"
-        style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"
+        style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"
+        v-show="isShown"
       ></div>
     </div>
   </body>
