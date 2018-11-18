@@ -4,7 +4,9 @@ let url = {
   category:'/category/topList',
   ranklist:'/category/rank',
   sublist:'/category/subList',
-  searchList:'/search/list'
+  searchList:'/search/list',
+  details: '/goods/details',
+  deals:'/goods/deal'
 }
 //开发环境和直接上线的切换
 let host = 'http://rap2api.taobao.org/app/mock/7058'

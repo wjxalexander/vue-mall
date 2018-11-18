@@ -68,10 +68,13 @@
         <div class="search-wrap js-waterfull-wrap">
           <ul
             class="js-list js-lazy"
+              v-infinite-scroll="getSearchList"
+              infinite-scroll-disabled="loading"
+              infinite-scroll-distance="50"
           >
             <li class="goods-item" v-for="list in searchLists">
               <a
-                href="https://h5.youzan.com/v2/showcase/goods?alias=2755moo9i2r1c&amp;source=yzapp&amp;f_platform=yzapp"
+                :href="'goods.html?'+list.id"
               >
                 <div class="thumb">
                   <img :src="list.img" />
@@ -97,6 +100,7 @@
         class="go-to-top"
         style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"
         v-show="isShown"
+        @click='toTop'
       ></div>
     </div>
   </body>
