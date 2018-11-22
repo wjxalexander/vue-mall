@@ -9,9 +9,10 @@ import mixin from 'js/mixin.js'
 import qs from "qs";
 import VueTouch from 'vue-touch'
 Vue.use(VueTouch, { name: 'v-touch' })
-
+import Velocity from 'velocity-animate'
 
 new Vue({
+
   el: "#app",
   data: {
     cartLists: null,
@@ -159,6 +160,22 @@ new Vue({
         shop.editing = false
         shop.editingMsg = '编辑'
       })
+    },
+    start(e,good){
+      good.startx = e.changedTouches[0].clientX//初始X轴坐标,无需响应式
+
+    },
+    end(e,good,shopIndex,goodIndex){
+      let endx = e.changedTouches[0].clientX//初始X轴坐标
+      let left = '0'
+      if(good.startx - endx >100){
+        left = '-60px'
+      }
+      if(endx- good.startx >100){
+        left = '0px'
+      }
+      console.log(this.$refs[`goods-${shopIndex}-${goodIndex}`])
+      Velocity(this.$refs[`goods-${shopIndex}-${goodIndex}`], {left})
     }
   },
   computed: {
@@ -227,7 +244,8 @@ new Vue({
         return arr
       }
       return []
-    }
+    },
+   
   },
   mixins: [mixin]
 })

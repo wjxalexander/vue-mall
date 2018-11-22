@@ -50,11 +50,13 @@
                   <!---->
                   <div>
                     <ul class="js-list block block-list block-list-cart border-0">
-                    <v-touch v-on:swipeleft="onSwipeLeft(shop)"
-                    v-bind:swipe-options="{threshold: 100 }">
                       <li class="block-item block-item-cart " 
                       :class="{editing:shop.editing}"
-                      v-for="(good,goodIndex) in shop.goodsList">
+                      v-for="(good,goodIndex) in shop.goodsList"
+                      :ref="'goods-'+shopIndex+'-'+goodIndex" 
+                      @touchstart="start($event,good)"
+                      @touchend="end($event,good,shopIndex,goodIndex)">
+                      <!-- $event传事件 -->
                         <div>
                           <div class="check-container" @click="selectGood(shop,good)">
                             <span class="check" :class="{checked: editingShop ? good.removeChecked:good.checked}"></span>
@@ -95,11 +97,10 @@
                             <div class="error-box"></div>
                           </div>
                           <transition name="slide-fade">
-                            <div class="delete-btn" v-show="shop.editing"  @click="remove(shop,shopIndex,good,goodIndex)"><span>删除</span></div>
+                            <div class="delete-btn"  @click="remove(shop,shopIndex,good,goodIndex)"><span>删除</span></div>
                           </transition>
                         </div>
                       </li>
-                    </v-touch>
                     </ul>
                   </div>
                 </div>
