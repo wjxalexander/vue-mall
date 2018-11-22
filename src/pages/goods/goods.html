@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     [v-cloak]{display: none}
+    /* 处理闪烁 */
   </style>
 </head>
 
@@ -378,7 +379,7 @@
          <!-- 弹出层popout -->
          <transition name='fade'>
           <div id="QfEqtDbeK9" class="sku-layout sku-box-shadow popup" 
-          style="overflow: hidden; position: absolute; z-index: 1000; background: white; bottom: 0px; left: 0px; right: 0px; visibility: visible;
+          style="overflow: hidden; position: fixed; z-index: 1000; background: white; bottom: 0px; left: 0px; right: 0px; visibility: visible;
           " v-show="showSku">
             <div class="sku-layout-title name-card sku-name-card">
               <div class="thumb"><img class="js-goods-thumb goods-thumb" src="https://img.yzcdn.cn/upload_files/2017/07/12/FkSvYz8FLLD9-t0smXO43hF6ov7S.jpg?imageView2/2/w/100/h/100/q/75/format/webp?imageView2/2/w/100/h/100/q/75/format/webp" alt=""></div>

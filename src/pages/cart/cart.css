@@ -1709,3 +1709,22 @@ only screen and (min-device-pixel-ratio: 1.5) {
   top: initial;
   bottom: 0px
 }
+。
+.slide-fade-enter-active {
+  transition: all 1s ease;
+}
+.slide-fade-enter{
+  opacity: 0;
+  /* transform: translateX(-100px); */
+}
+.slide-fade-enter-to{
+  transform: translateX(100px);
+}
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0, 0, 1, 1);
+}
+ .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  /* opacity: 0; */
+}

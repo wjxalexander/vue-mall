@@ -7,7 +7,12 @@ let url = {
   searchList:'/search/list',
   details: '/goods/details',
   deals:'/goods/deal',
-  addCart: '/cart/add'
+  addCart: '/cart/add',
+  cartList:'/cart/list',
+  cartReduce:'/cart/reduce',
+  cartRemove:'/cart/remove',
+  cartAllRemove:'/cart/mrremove',
+  cartUpdate:'/cart/update'
 }
 //开发环境和直接上线的切换
 let host = 'http://rap2api.taobao.org/app/mock/7058'
