@@ -1,7 +1,6 @@
 import axios from 'axios'
 import url from 'js/api.js'
-import { resolve } from 'url';
-import { rejects } from 'assert';
+
 
 function fetch(url,data) {
   return new Promise((resolve,reject) => {

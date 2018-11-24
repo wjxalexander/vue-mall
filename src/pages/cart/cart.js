@@ -1,14 +1,14 @@
 import './cart_base.css'
 import './cart_trade.css'
 import './cart.css'
-
-import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
+import Vue from 'vue'
 import mixin from 'js/mixin.js'
+import CartService from 'js/cartService.js'
+import fetch from 'js/fetch.js'
 import qs from "qs";
-import VueTouch from 'vue-touch'
-Vue.use(VueTouch, { name: 'v-touch' })
+
 import Velocity from 'velocity-animate'
 
 new Vue({
@@ -93,10 +93,7 @@ new Vue({
 
     },
     add(good) {
-      axios.post(url.cartReduce, {
-        id: good.id,
-        number: 1
-      }).then(res => {
+      add(good.id).then(res => {
         good.number++//直接该本地数据无需重复请求，如果异步请求没有成功，则本地数据也不修改
       })
     },
@@ -123,6 +120,8 @@ new Vue({
             this.removeShop()//切换回正常状态
           }
           this.removePopup = false
+          // this.$refs[`goods-${shopIndex}-${goodIndex}`][0].style.left = '0px'
+          // refs返回一个数组
         })
       }else{
         let ids = []
@@ -174,7 +173,6 @@ new Vue({
       if(endx- good.startx >100){
         left = '0px'
       }
-      console.log(this.$refs[`goods-${shopIndex}-${goodIndex}`])
       Velocity(this.$refs[`goods-${shopIndex}-${goodIndex}`], {left})
     }
   },
