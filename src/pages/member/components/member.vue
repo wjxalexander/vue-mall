@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html class="" lang="zh-cmn-Hans">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="keywords" content="有赞,移动电商服务平台">
-  <meta name="description" content="">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="format-detection" content="telephone=no">
-  <meta http-equiv="cleartype" content="on">
-  <meta name="referrer" content="always">
-  <link rel="shortcut icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico">
-  <title>我</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
-</head>
-
-<body class=" ">
-  <div class="container " style="min-height: 581px;">
+<template>
+   <div class="container " style="min-height: 581px;">
     <div class="content">
       <div class="user-infos">
         <div class="pull-left avatar">
@@ -99,12 +81,17 @@
       </div>
     </div>
   </div>
-  <div class="footer" style="min-height: 86px;">
-    <div class="copyright">
-      <div class="ft-copyright ">
-        <a href="https://www.youzan.com/?from_source=support_logo">有赞提供技术支持</a> </div>
-    </div>
-  </div>
-</body>
+</template>
+<script>
+export default {
+  mounted(){
+    console.log('32003')
+  }
+}
+</script>
 
-</html>
+
+<style scoped>
+@import './member_base.css';
+@import './member.css';
+</style>
