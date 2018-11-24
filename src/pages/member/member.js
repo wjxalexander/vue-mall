@@ -5,6 +5,16 @@ Vue.use(VueRouter)//路由是一个个插件 使用
 let routes = [{
   path:'/',
   component: require('./components/member.vue')
+},{
+  path: '/address',
+  component: require('./components/address.vue'),
+  children:[{
+    path: 'all',
+    component: require('./components/all.vue')
+  },{
+    path: 'form',
+    component: require('./components/form.vue')
+  }]
 }]
 //实例化router
 let router = new VueRouter({
