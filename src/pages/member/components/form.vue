@@ -76,3 +76,4 @@
     </div>
   </div>
 </template>
+<script src="./form.js">  </script>

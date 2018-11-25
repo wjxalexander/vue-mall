@@ -9,10 +9,17 @@ let routes = [{
   path: '/address',
   component: require('./components/address.vue'),
   children:[{
+    //跳转 重定向
+    path: '',
+    // component: require('./components/all.vue')//默认渲染为ALL.VUE
+    redirect: 'all'
+  },{
     path: 'all',
+    name: 'all',
     component: require('./components/all.vue')
   },{
     path: 'form',
+    name:'form',
     component: require('./components/form.vue')
   }]
 }]
