@@ -14,9 +14,9 @@
         <div class="block-item">
           <label>选择地区</label>
           <div class="select-group">
-            <select class="js-province-selector">
+            <select class="js-province-selector" v-model='provinceValue'>
               <option value="-1">选择省份</option>
-              <option value="110000">北京市</option>
+              <option :value="p.value" v-for="p in addressData.list" :key="p.id">{{p.label}}</option>
             </select>
             <select class="js-city-selector">
               <option value="-1">选择城市</option>
