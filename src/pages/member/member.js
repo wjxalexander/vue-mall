@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)//路由是一个个插件 使用
-// 数组配置 这类不能写routers？？？
-let routes = [{
+// 数组配置 这里不能写routers？？？
+let routes = [
+  {
   path:'/',
   component: require('./components/member.vue')
 },{

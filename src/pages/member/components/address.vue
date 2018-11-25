@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view></router-view> 
-    <!-- d对子路由渲染 -->
+    <!-- 对子路由渲染 children-->
   </div>
 </template>
 <style scoped>

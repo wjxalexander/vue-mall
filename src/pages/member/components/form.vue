@@ -16,13 +16,16 @@
           <div class="select-group">
             <select class="js-province-selector" v-model='provinceValue'>
               <option value="-1">选择省份</option>
-              <option :value="p.value" v-for="p in addressData.list" :key="p.id">{{p.label}}</option>
+              <option :value="p.value" v-for="p in addressData.list" >{{p.label}}</option>
+              <!-- 以上我绑定了key='id'会发现省份会一直显示北京，这从侧面说明了key的作用：使用 key，它会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。 -->
             </select>
-            <select class="js-city-selector">
+            <select class="js-city-selector" v-model="cityValue">
               <option value="-1">选择城市</option>
+              <option :value="city.value" v-for="city in cityList" >{{city.label}}</option>
             </select>
-            <select class="js-county-selector" name="area_code" data-code="">
+            <select class="js-county-selector" name="area_code" v-model="districtValue">
               <option value="-1">选择地区</option>
+              <option :value="d.value" v-for="d in districtList" >{{d.label}}</option>
             </select>
           </div>
         </div>
@@ -32,13 +35,17 @@
         </div>
       </div>
     </div>
-    <div class="block section js-save block-control-btn" >
+    <div class="block section js-save block-control-btn" @click="add" >
       <div class="block-item c-blue center">保存</div>
     </div>
-    <div class="block section js-delete block-control-btn" v-show = "type==='edit'" >
-      <div class="block-item c-red center">删除</div>
+    <div class="block section js-delete block-control-btn" 
+    v-show = "type==='edit'" 
+    @click="remove">
+      <div class="block-item c-red center" >删除</div>
     </div>
-    <div class="block stick-bottom-row center js-save-default"  v-show = "type==='edit'">
+    <div class="block stick-bottom-row center js-save-default"  
+    v-show = "type==='edit'"
+    @click="setDefault">
       <button class="btn btn-standard js-save-default-btn">设为默认收货地址</button>
     </div>
   </div>
