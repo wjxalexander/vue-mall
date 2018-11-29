@@ -5,14 +5,35 @@
           <li v-for="(list,index) in navConfig" 
           :class="{active:index===currentIndex}"
           @click="onChange(list,index)"><a><i :class="list.icon"></i><div>{{list.name}}</div></a></li>
+          <li>
+           <router-link :to="{name: 'index'}">Go to Foo</router-link>
+          </li>
+          <router-view></router-view>
         </ul>
+          
       </div>
 
   </div>
 </template>
 <script>
 import qs from 'qs'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)//路由是一个个插件 使用
 let {index} = qs.parse(location.search.substring(1))
+
+let routes = [
+  {
+    name: 'index',
+    path:'/index.html',
+
+  }
+]
+const router = new VueRouter({
+  routes // (缩写) 相当于 routes: routes
+})
+
+
   let navConfig = [{
     name: '有赞',
     icon: 'icon-home',
@@ -21,11 +42,13 @@ let {index} = qs.parse(location.search.substring(1))
     name: '分类',
     icon: 'icon-category',
     href: 'category.html'
-  },{
-    name: '购物车',
-    icon: 'icon-cart',
-    href: 'cart.html'
-  },{
+  },
+  // {
+  //   name: '购物车',
+  //   icon: 'icon-cart',
+  //   href: 'cart.html'
+  // },
+  {
     name: '我',
     icon: 'icon-user',
     href: 'member.html'
@@ -33,6 +56,7 @@ let {index} = qs.parse(location.search.substring(1))
 
 export default {
   name:"foot",
+  router,
   data(){
     return {
       navConfig,

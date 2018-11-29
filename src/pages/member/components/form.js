@@ -32,6 +32,12 @@ export default {
     }
   },
   watch:{
+    lists:{
+      handler(){
+        this.$router.go(-1)
+      },
+      deep: true//深度监听
+    },
     //当选择省份的时候监听到他的城市
     provinceValue(val){
       if(val === -1) return 
@@ -66,13 +72,15 @@ export default {
       let {name,tel,provinceValue,cityValue,districtValue,address} = this
       let data =  {name,tel,provinceValue,cityValue,districtValue,address} 
       if(this.type === 'add'){
-        data.id = this.id
-        AddressService.add(data).then(res=>{
-          //回跳
-          this.$router.go(-1)
-        })
+        // data.id = this.id
+        // AddressService.add(data).then(res=>{
+        //   //回跳
+        //   this.$router.go(-1)
+        // })
+        this.$store.dispatch('addAction',data)
       }
       if(this.type === 'edit'){
+        data.id = this.id
         AddressService.update(data).then(res=>{
           //回跳
           this.$router.go(-1)
@@ -81,16 +89,23 @@ export default {
     },
     remove(){
       if(window.confirm('确认删除')){
-        AddressService.remove(this.id).then(res=>{
-          this.$router.go(-1)
-        })
+        // AddressService.remove(this.id).then(res=>{
+        //   this.$router.go(-1)
+        // })
+        this.$store.dispatch('removeAction',this.id)
       }
     },
     setDefault(){
-      AddressService.remove(this.id).then(res=>{
-        this.$router.go(-1)
-      })
+      // AddressService.remove(this.id).then(res=>{
+      //   this.$router.go(-1)
+      // })
+      this.$store.dispatch('setDefaultAction',this.id)
+
     }
   },
-  
+  computed:{
+    lists(){
+      return this.$store.state.lists
+    }
+  }
 };
